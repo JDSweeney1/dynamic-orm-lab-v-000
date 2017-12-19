@@ -57,7 +57,7 @@ class InteractiveRecord
     # DB[:conn].results_as_hash = true
     hash.collect do |key, value|
       sql = "SELECT * FROM #{table_name} WHERE #{key} = '#{value}'"
-      DB[:conn].execute(sql)
+      DB[:conn].execute(sql)[0]
     end
   end
 
