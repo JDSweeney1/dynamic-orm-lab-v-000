@@ -22,7 +22,7 @@ class InteractiveRecord
 
   def initialize(options={})
     options.each do |property, value|
-      send("#{property}=", value)
+      self.send("#{property}=", value)
     end
   end
 
@@ -48,9 +48,9 @@ class InteractiveRecord
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
-  # def self.find_by_name(name)
-  #   sql = <<-SQL
-  #     SELECT * FROM #{}
-  # end
+  def self.find_by_name(name)
+    sql = <<-SQL
+      SELECT * FROM #{}
+  end
 
 end
